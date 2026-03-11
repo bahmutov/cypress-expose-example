@@ -22,3 +22,6 @@ jobs:
           CYPRESS_API_KEY: '123secret!'
           # public variable accessible via Cypress.expose
           CYPRESS_EXPOSE_ANSWER: 42
+          # since we cannot do --expose via Cypress github action
+          # have to use the process environment variable
+          CYPRESS_EXPOSE_USER_NAME: Joe
