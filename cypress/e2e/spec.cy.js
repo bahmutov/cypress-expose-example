@@ -1,25 +1,27 @@
-// enables intelligent code completion for Cypress commands
-// https://on.cypress.io/intelligent-code-completion
 /// <reference types="cypress" />
 
-describe('Example Cypress TodoMVC test', () => {
-  beforeEach(() => {
-    // usually we recommend setting baseUrl in cypress.json
-    // but for simplicity of this example we just use it here
-    // https://on.cypress.io/visit
-    cy.visit('http://todomvc.com/examples/vue/')
+describe('Expose variables', () => {
+  it('has Cypress.expose values', () => {
+    expect(Cypress.expose('answer'), 'exposed answer').to.equal(42)
   })
 
-  it('adds 2 todos', function () {
-    cy.get('.new-todo')
-      .type('learn testing{enter}')
-      .type('be cool{enter}')
-    cy.get('.todo-list li').should('have.length', 2)
+  it('has all expected exposed values', () => {
+    expect(Cypress.expose(), 'keys').to.have.all.keys(
+      'answer',
+      'USER_NAME',
+    )
   })
 
-  // more examples
-  //
-  // https://github.com/cypress-io/cypress-example-todomvc
-  // https://github.com/cypress-io/cypress-example-kitchensink
-  // https://on.cypress.io/writing-your-first-test
+  it('has cy.env values', () => {
+    cy.env(['API_KEY']).should('deep.equal', {
+      API_KEY: '123secret!',
+    })
+  })
+
+  it('has all secret keys', () => {
+    cy.env(['API_KEY', 'PASS_WORD']).should('have.all.keys', [
+      'API_KEY',
+      'PASS_WORD',
+    ])
+  })
 })

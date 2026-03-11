@@ -4,7 +4,8 @@
   "description": "Expose variables in Cypress v16+",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "CYPRESS_API_KEY=123secret! CYPRESS_EXPOSE_ANSWER=42 cypress open --env PASS_WORD=my-password --expose USER_NAME=Joe",
+    "test": "CYPRESS_API_KEY=123secret! CYPRESS_EXPOSE_ANSWER=42 cypress run --env PASS_WORD=my-password --expose USER_NAME=Joe"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +15,8 @@
   "devDependencies": {
     "cypress": "^15.11.0",
     "prettier": "^3.8.1"
+  },
+  "dependencies": {
+    "to-camel-case": "^1.0.0"
   }
 }
