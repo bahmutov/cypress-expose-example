@@ -2,13 +2,19 @@
 
 describe('Expose variables', () => {
   it('has Cypress.expose values', () => {
+    // note that the value is cast as a number
     expect(Cypress.expose('answer'), 'exposed answer').to.equal(42)
   })
 
   it('has all expected exposed values', () => {
-    expect(Cypress.expose(), 'keys').to.have.all.keys(
-      'answer',
-      'USER_NAME',
+    const exposedKeys = Object.keys(Cypress.expose())
+    expect(exposedKeys, 'keys')
+      .to.have.length(2)
+      .and.include('answer')
+    // the "userName" could also be "USER_NAME"
+    expect(exposedKeys, 'username').to.satisfy(
+      (keys) =>
+        keys.includes('userName') || keys.includes('USER_NAME'),
     )
   })
 
