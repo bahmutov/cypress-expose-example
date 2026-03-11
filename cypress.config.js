@@ -8,12 +8,6 @@ module.exports = defineConfig({
     supportFile: false,
     fixturesFolder: false,
 
-    // MUST DECLARE ALL POSSIBLE FIELDS
-    // otherwise cannot overwrite them inside setupNodeEvents
-    expose: {
-      answer: 0,
-    },
-
     setupNodeEvents(on, config) {
       console.log('env', config.env)
       console.log('expose', config.expose)
