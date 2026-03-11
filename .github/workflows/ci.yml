@@ -14,7 +14,10 @@ jobs:
         uses: cypress-io/github-action@v6
         # pass several variables to Cypress
         # both private (env) and public (expose)
+        with:
+          env: PASS_WORD=my-password
         env:
+          # via process environment variables
           # private variable accessible via cy.env
           CYPRESS_API_KEY: '123secret!'
           # public variable accessible via Cypress.expose
