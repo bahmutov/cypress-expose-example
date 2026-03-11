@@ -11,7 +11,7 @@ jobs:
 
       - name: Run tests 🧪
         # https://github.com/cypress-io/github-action
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v7
         # pass several variables to Cypress
         # both private (env) and public (expose)
         with:
