@@ -1,5 +1,5 @@
 const { defineConfig } = require('cypress')
-const camel = require('to-camel-case')
+const cypressExpose = require('cypress-expose')
 
 module.exports = defineConfig({
   allowCypressEnv: false,
@@ -9,21 +9,7 @@ module.exports = defineConfig({
     fixturesFolder: false,
 
     setupNodeEvents(on, config) {
-      console.log('env', config.env)
-      console.log('expose', config.expose)
-
-      Object.entries(config.env).forEach(([key, value]) => {
-        if (key.startsWith('EXPOSE_')) {
-          const name = key.replace('EXPOSE_', '')
-          const normalizedName = camel(name)
-          config.expose[normalizedName] = value
-          delete config.env[key]
-        }
-      })
-
-      console.log('exposed fields')
-      console.log('env', config.env)
-      console.log('expose', config.expose)
+      cypressExpose(config)
 
       // IMPORTANT: return the config object
       // to let Cypress know we modified it
