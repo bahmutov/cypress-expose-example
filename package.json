@@ -4,6 +4,7 @@
   "description": "Expose variables in Cypress v16+",
   "main": "index.js",
   "scripts": {
+    "badges": "npx -p dependency-version-badge update-badge cypress cypress-expose",
     "dev": "CYPRESS_API_KEY=123secret! CYPRESS_EXPOSE_ANSWER=42 cypress open --env PASS_WORD=my-password --expose USER_NAME=Joe",
     "test": "CYPRESS_API_KEY=123secret! CYPRESS_EXPOSE_ANSWER=42 cypress run --env PASS_WORD=my-password --expose USER_NAME=Joe"
   },

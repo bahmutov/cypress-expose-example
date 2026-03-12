@@ -1,4 +1,4 @@
-# cypress-expose-example
+# cypress-expose-example ![cypress version](https://img.shields.io/badge/cypress-15.11.0-brightgreen) ![cypress-expose version](https://img.shields.io/badge/cypress--expose-1.0.2-brightgreen)
 
 > Expose variables in Cypress v16+
 
