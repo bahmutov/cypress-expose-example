@@ -30,4 +30,12 @@ describe('Expose variables', () => {
       'PASS_WORD',
     ])
   })
+
+  it('deletes the exposed variables from cy.env', () => {
+    cy.env(['answer']).should('deep.equal', {})
+    // another secret value remains
+    cy.env(['API_KEY']).should('deep.equal', {
+      API_KEY: '123secret!',
+    })
+  })
 })
